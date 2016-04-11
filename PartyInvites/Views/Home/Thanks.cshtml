@@ -1,0 +1,47 @@
+﻿@model PartyInvites.Models.GuestLogModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+</head>
+<body>
+
+    @{
+        try
+        {
+            WebMail.SmtpServer = "smtp.example.com";
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "mySmtpUsername";
+            WebMail.Password = "mySmtpPassword";
+            WebMail.From = "rsvps@example.com";
+            WebMail.Send("party-host@example.com", "RSVP Notification",
+            Model.FirstName+" "+Model.LastName + " is " + ((Model.WillAttend == true) ? "" : "not")
+            + "attending");
+        }
+        catch (Exception)
+        {
+            @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+}
+    }
+
+    <hr />
+    <div class="container container"-fluid>
+        <h1>Thank you,&nbsp;@Model.FirstName&nbsp;@Model.LastName!</h1>
+        <div class="lead text-success">
+            @if (Model.WillAttend == true)
+            {
+                    @:Great!! You are coming, looking forward to see you.
+            }
+            else
+            {
+                @:Sorry that you can't make it, and thanks for letting us know.
+            }
+        </div> 
+        
+    </div>
+</body>
+</html>

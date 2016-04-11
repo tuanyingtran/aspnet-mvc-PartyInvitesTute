@@ -1,0 +1,26 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Party Invites</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1 class="text-center">@ViewBag.Greeting</h1>
+        </div>
+        <hr />
+        <div class="text-center">
+            <h3 class="text text-success">
+                We are going to have an awesome party. (To do add pictures)
+            </h3>
+            <div class="btn btn-default glyphicon glyphicon-list-alt">
+                @Html.ActionLink("RSVP Now!", "RspvForm")
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html>

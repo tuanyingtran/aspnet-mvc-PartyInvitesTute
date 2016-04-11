@@ -1,0 +1,63 @@
+﻿@model PartyInvites.Models.GuestLogModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" />
+    <title>Rspv Form</title>
+    
+</head>
+<body>
+    <div class="container container-fluid" >
+        <div class="row">
+            <div class="col col-md-6 col-sm-6 col-lg-6">
+                <div class="pannel panel-default">
+                    <div class="panel-heading"><h4>RSPV Register</h4></div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary()
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", @placeholder = "First name..." })
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", @placeholder = "Last name..." })
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email..." })
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number:</label>
+                                @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder = "Phone number..." })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Will You Attend?</label>
+                                @Html.DropDownListFor(
+                                    x => x.WillAttend,
+                                    new[]
+                                        {
+                                       new SelectListItem() {Text ="Yes, Will Join!", Value=bool.TrueString },
+                                       new SelectListItem() {Text ="No, Can't come", Value=bool.FalseString }
+                                        },
+                                    "Please Choose an Option")
+                            </div>
+                            <div>
+                                <input class="btn btn-success glyphicon glyphicon-send" type="submit" value="Submit"/>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div> 
+       
+    </div>
+</body>
+</html>
